@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Overlook Hotel</title>
+    <link rel='stylesheet' type='text/scss' href='base.scss'>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <header> 
+      <h1>Welcome to the Overlook Hotel</h1>
+    </header>
+    <section class='login-box'>
+      <header class='login-header'> Log in </header>
+
+      <form class='login-form'>
+        <p>Username</p>
+        <input type='text' name='Username' aria-placeholder="Enter Username">
+        <p>Password</p>
+        <input type='password' name='password' aria-placeholder="Enter Password"><br>
+        <button type="button"> submit</button>
+
+      </form>
+    </section>
     <h1>Webpack Starter Kit</h1>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <img href="../assets/maldives-3.jpg" alt="turing logo" height="100px" width="100px">
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
+<!-- Icons made by <a href="https://www.flaticon.com/free-icon/user_1246351?term=account&page=1&position=1"
+  title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->

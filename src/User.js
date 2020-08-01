@@ -1,7 +1,18 @@
 class User {
-  constructor() {
-    this.password = '1'
+  constructor(username) {
+    this.username = username
+    this.password = 'overlook2020'
+    this.allUsers = []
+    this.allRooms = []
+    this.allBookings = []
+  }
 
+  checkPassword(usernameAttempt, pwAttempt) {
+    if(usernameAttempt === this.username && pwAttempt === this.password) {
+      return true
+    } else {
+      return `Username or Password was entered incorrectly`
+    }
   }
   findBookings(id) {
     const personalBookings = bookings.filter(booking => {

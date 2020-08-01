@@ -89,6 +89,18 @@ describe.only('User', function () {
   it('should be able to validate a user if their credentials are correct', () => {
     expect(user.checkValidation('customer1', 'overlook2020')).to.equal(true)
   })
+
+  it('should accept if a string of manager is entered', () => {
+    expect(user.checkValidation('manager', 'overlook2020')).to.equal(true)
+  })
+
+  it('should return an error message if either or both fields are not satisfied', () => {
+    expect(user.checkValidation('customer1', 'Overlook2020')).to.equal(`Username or Password was entered incorrectly`)
+  })
+
+  it('should return an error message if either or both fields are not satisfied', () => {
+    expect(user.checkValidation()).to.equal(`Username or Password was entered incorrectly`)
+  })
   // it('should have a method that creates a list of usernames', () => {
   //   expect(user.allUsernames).to.equal(allUsers)
   // })

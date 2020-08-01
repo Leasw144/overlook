@@ -3,7 +3,7 @@ class Bookings {
     this.userID = userID
     this.date = date
     this.roomNumber = roomNumber
-    this.roomServiceCharges
+    this.roomServiceCharges = []
   }
 }
 

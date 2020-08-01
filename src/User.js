@@ -5,7 +5,6 @@ class User {
     this.allUsers = guestsData
     this.allRooms = []
     this.allBookings = []
-    
     this.createUsernames(guestsData)
   }
   
@@ -17,16 +16,18 @@ class User {
   checkValidation(usernameAttempt, pwAttempt) {
     if (this.usernameLog.includes(usernameAttempt) && pwAttempt === this.password) {
       return true
-    } else {
-      return `Username or Password was entered incorrectly`
-    }
+    } else if (usernameAttempt === 'manager' && pwAttempt === this.password) {
+      return true
+    } 
+    return `Username or Password was entered incorrectly`
   }
-  // findBookings(id) {
-  //   const personalBookings = bookings.filter(booking => {
-  //     return booking.userID === this.guestID
-  //   })
-  //   this.personalBookings = personalBookings
-  // }
 }
+// findBookings(id) {
+//   const personalBookings = bookings.filter(booking => {
+//     return booking.userID === this.guestID
+//   })
+//   this.personalBookings = personalBookings
+// }
+
 
 export default User

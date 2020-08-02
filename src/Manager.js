@@ -7,7 +7,6 @@ class Manager extends User {
 
   calculateRevenue(date) {
     let todaysBookings = this.allBookings.filter(booking => booking.date === date)
-    // console.log(todaysBookings)
     return todaysBookings.reduce((todaysRevenue, todaysBooking) => {
       this.allRooms.forEach(room => {
         if (room.number === todaysBooking.roomNumber) {
@@ -25,6 +24,16 @@ class Manager extends User {
     } else {
       return 'Please try a different name'
     }
+  }
+
+  findTotalOpenRooms(date) {
+    const bookedToday = this.allBookings.filter(booking => booking.date === date) 
+    return this.allRooms.length - bookedToday.length
+  }
+
+  calcPercentageOccupied(date) {
+    const bookedToday = this.allBookings.filter(booking => booking.date === date)
+    return ((bookedToday.length / this.allRooms.length).toFixed(4)) * 100
   }
 
 

@@ -100,5 +100,12 @@ describe('Manager', function () {
     }])
   })
 
+  it('will return a message if user could not be found', function() {
+    expect(manager.searchUserHistory('Leet')).to.equal('Please try a different name')
+  })
+
+  it('will return a message if no input has been made', function() {
+    expect(manager.searchUserHistory()).to.equal('Please try a different name')
+  })
 
 })

@@ -20,8 +20,11 @@ class Manager extends User {
 
   searchUserHistory(searchInput) {
     const suspectedUser = this.allUsers.find(user => user.name.includes(searchInput))
-    console.log('search results', this.allBookings.filter(booking => suspectedUser.id === booking.userID))
-    return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+    if (suspectedUser) {
+      return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+    } else {
+      return 'Please try a different name'
+    }
   }
 
 

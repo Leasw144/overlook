@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import Manager from '../src/Manager'
-import User from '../src/User';
 
 describe('Manager', function () {
  let bookings, allRooms, allUsers, manager, user;
@@ -55,7 +54,7 @@ describe('Manager', function () {
       },
       {
         "id": "5fwrgu4i7k55hl6t5",
-        "userID": 3,
+        "userID": 8,
         "date": "2020/01/24",
         "roomNumber": 24,
         "roomServiceCharges": []
@@ -68,11 +67,8 @@ describe('Manager', function () {
         "roomServiceCharges": []
       }
     ]
-    console.log('bookings at 0', bookings[0])
-    user = new User(allUsers, allRooms, bookings)
     manager = new Manager(allUsers, allRooms, bookings)
 
-    console.log(manager)
   })
   it('should be a function', function () {
     expect(Manager).to.be.a('function');
@@ -106,6 +102,26 @@ describe('Manager', function () {
 
   it('will return a message if no input has been made', function() {
     expect(manager.searchUserHistory()).to.equal('Please try a different name')
+  })
+
+  it('should be able to know how many availble rooms there are on a given day', () => {
+    expect(manager.findTotalOpenRooms("2020/04/22")).to.equal(1)
+  })
+
+  it('should be able to give a percentage of rooms occupied on a given day', () => {
+    expect(manager.calcPercentageOccupied("2020/01/24")).to.equal(33.33)
+  })
+
+  it('should be able to give a percentage of rooms occupied on a given day', () => {
+    expect(manager.calcPercentageOccupied("2020/04/22")).to.equal(66.67)
+  })
+
+
+  it('should return zero if there are no rooms booked that day', () => {
+    expect(manager.calcPercentageOccupied("2022/01/24")).to.equal(0)
+  })
+  it.skip('should be able to delete a booking', function() {
+    expect(manager.getOpenRooms('2020/04/21')).to.equal(2)
   })
 
 })

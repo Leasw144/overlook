@@ -6,9 +6,9 @@ class Manager extends User {
   }
 
   calculateRevenue(date) {
-    let todaysBookings = this.allBookings.filter(booking => booking.date === date)
+    let todaysBookings = this.allBookings.bookings.filter(booking => booking.date === date)
     return todaysBookings.reduce((todaysRevenue, todaysBooking) => {
-      this.allRooms.forEach(room => {
+      this.allRooms.rooms.forEach(room => {
         if (room.number === todaysBooking.roomNumber) {
           todaysRevenue += room.costPerNight
         }

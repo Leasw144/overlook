@@ -21,6 +21,7 @@ const domUpdates = {
   updateManagerStats(date) {
     console.log(this.currentUser)
     document.querySelector('.total-rooms-available').innerText = this.currentUser.findTotalOpenRooms(date)
+    document.querySelector('.todays-revenue').innerText = this.currentUser.calculateRevenue(date)
   },
 
   sendToGuestDash() {

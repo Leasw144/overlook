@@ -1,10 +1,8 @@
 const domUpdates = {
-  currentUser: null,
-  todaysDate: null,
-  hotel: null,
 
   determineDash(outcome) {
     if (outcome === 1) {
+      console.log('it worked')
       this.sendToGuestDash()
     } else if (outcome === 0) {
       this.sendToManagerDash() 

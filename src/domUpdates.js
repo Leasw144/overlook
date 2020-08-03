@@ -12,7 +12,8 @@ const domUpdates = {
   },
 
   sendToManagerDash() {
-    console.log('working')
+    document.querySelector('.login-box').classList.add('hidden')
+    document.querySelector('.manager-display').classList.remove('hidden')
   },
 
   sendToGuestDash() {

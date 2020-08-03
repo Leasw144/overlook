@@ -27,8 +27,9 @@ class Manager extends User {
   }
 
   findTotalOpenRooms(date) {
-    const bookedToday = this.allBookings.filter(booking => booking.date === date) 
-    return this.allRooms.length - bookedToday.length
+    const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date) 
+    console.log('lives in manager class', bookedToday.length)
+    return this.allRooms.rooms.length - bookedToday.length
   }
 
   calcPercentageOccupied(date) {

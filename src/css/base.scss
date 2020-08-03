@@ -1,20 +1,25 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+$translucent: rgba(60, 60, 60, .60);;
 
 body {
   background: url(../assets/maldives-3.jpg);
-  font-family: tangerine;
+  font-family: recursive;
+  color:white
 }
 
 header {
-  background-color: white;
+  background-color: $translucent;
+
+}
+.display{
+  font-size: 8vh;
 }
 
 .login-box {
   width: 320px;
   height: 420px;
-  background-color: white;
+  background-color: $translucent;
   position:absolute;
   top: 50%;
   left: 50%;
@@ -31,14 +36,56 @@ header {
 }
 
 .login-header {
+  background-color: bottom;
   font-size: 6vh;
   display: flex;
   justify-content: center;
 }
 
+.manager-display {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: $translucent;
+}
+
+.box {
+    flex: 1 1 150px; /*  Stretching: */
+    flex: 0 1 150px; /*  No stretching: */
+    margin: 5px;
+  }
 // .login-form < * {
 //   font-size: 3vh;
 //   padding{ 0vh}
 //   margin: 0px
 
 // }
+
+.hidden {
+  display: none
+}
+
+.search-bar {
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.wrapper .input {
+  width: 85%;
+  padding: 15px 20px;
+  border:none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.search-button {
+  background: ffec00;
+  width: 10%;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}

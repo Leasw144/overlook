@@ -3,27 +3,54 @@
   <head>
     <title>Overlook Hotel</title>
     <link rel='stylesheet' type='text/scss' href='base.scss'>
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
   </head>
   <body>
     <header> 
+      <img href='../src/assets/abstract.png'>
       <h1>Welcome to the Overlook Hotel</h1>
     </header>
-    <section class='login-box'>
-      <header class='login-header'> Log in </header>
+    <main>
+      <section class='manager-display'>
+            <aside class='search-bar'>
+              <h3>Find Guest History</h3>
+              <span><input type='text' class='input' placeholder="search by booking">
+              <button type='search-button'></button></span>
+            </aside>
+          <article class="box">
+            <h2>Total Rooms Available</h2>
+            <span class='display total-rooms-availble'>24</span>
+          </article>
 
-      <form class='login-form'>
-        <p>Username</p>
-        <input type='text' name='Username' aria-placeholder="Enter Username">
-        <p>Password</p>
-        <input type='password' name='password' aria-placeholder="Enter Password"><br>
-        <button type="button"> submit</button>
+          <article class="box">
+            <h2>Todays Revenue</h2>
+            <span class='display todays-revenue'>$1140</span>
+          </article>
 
-      </form>
-    </section>
-    <h1>Webpack Starter Kit</h1>
+          <article class="box">
+            <h2>Today's occupancy</h2>
+            <span class='display occupancy'>74%</span>
+          </article>
+          <section class='target-search'>
 
-    <img href="../assets/maldives-3.jpg" alt="turing logo" height="100px" width="100px">
+          </section>
+      </section>
+      <section class='login-box '>
+        <header class='login-header'> Log in </header>
+
+        <form class='login-form'>
+          <p>Username</p>
+          <input type='text' name='Username' class='username-input' aria-placeholder="Enter Username">
+          <p>Password</p>
+          <input type='password' name='password' class='pw-input' aria-placeholder="Enter Password"><br>
+          <button type="button" class='login-submit'> submit</button>
+          <span class='error-login'></span>
+
+        </form>
+      </section>
+    </main>
+
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>

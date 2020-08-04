@@ -10,13 +10,13 @@ class Guest extends Hotel {
 
   findName(usernameID) {
     const signedIn = this.allUsers.find(guest => {
- 
+
       return guest.id === Number(usernameID)
     })
     this.name = signedIn.name
     return this.name
   }
-  //not sure if findBookings should go here
+
   findPersonalBookings(name) { 
     const allGuestBookings = this.findGuestBookings(name)
     if (allGuestBookings === 'Please try a different name') {

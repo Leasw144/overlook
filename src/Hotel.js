@@ -1,3 +1,4 @@
+import moment from 'moment';
 class Hotel {
   constructor(guestsData, roomData, bookingsData) {
     // this.username = username || 0
@@ -25,10 +26,11 @@ class Hotel {
   }
 
   findGuestBookings(searchInput) {
-    console.log('lives in findGuestBookings/Hotel', this.allUsers)
     const suspectedUser = this.allUsers.find(user => user.name.includes(searchInput))
     if (suspectedUser) {
-      return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+      const toBeSorted = this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+      const sortDates = (a, b) => moment(b.date).format('YYYYMMDD') - moment(a.date).format('YYYYMMDD')
+      return toBeSorted.sort(sortDates)
     } else {
       return 'Please try a different name'
     }

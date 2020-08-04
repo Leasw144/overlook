@@ -1,6 +1,6 @@
-import User from '../src/User';
+import Hotel from '../src/Hotel';
 
-class Manager extends User {
+class Manager extends Hotel {
   constructor(guestsData, roomData, bookingsData) {
     super(guestsData, roomData, bookingsData)
   }

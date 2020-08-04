@@ -24,6 +24,20 @@ class Guest extends Hotel {
       return 'No Bookings Found!'
     }
     this.myBookings = allGuestBookings
+   
+  }
+
+  calcTotalAmountSpent() {
+    const totalSpent = this.myBookings.reduce((sum, booking) => {
+      this.allRooms.forEach(room => {
+        if(room.number === booking.roomNumber) {
+          sum += room.costPerNight
+        }
+      })
+      return sum
+    }, 0)
+    console.log('your toFixed', totalSpent)
+    return totalSpent.toFixed(2)
   }
 }
 

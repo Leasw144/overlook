@@ -23,6 +23,16 @@ class Hotel {
     } 
     return `Username or Password was entered incorrectly`
   }
+
+  findGuestBookings(searchInput) {
+    console.log('lives in findGuestBookings/Hotel', this.allUsers)
+    const suspectedUser = this.allUsers.find(user => user.name.includes(searchInput))
+    if (suspectedUser) {
+      return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+    } else {
+      return 'Please try a different name'
+    }
+  }
 }
 // findBookings(id) {
 //   const personalBookings = bookings.filter(booking => {

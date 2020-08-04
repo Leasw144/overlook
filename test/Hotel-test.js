@@ -62,10 +62,10 @@ describe.only('Hotel', function () {
       }
     ]
 
-    hotel = new Hotel(allUsers)
-    hotel.allBookings = bookings
-    hotel.allRooms = allRooms
-    hotel.allUsers = allUsers
+    hotel = new Hotel(allUsers, allRooms, bookings)
+    // hotel.allBookings = bookings
+    // hotel.allRooms = allRooms
+    // hotel.allUsers = allUsers
   })
   it('should be a function', function () {
     expect(hotel).to.be.a('function');

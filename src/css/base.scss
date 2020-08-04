@@ -89,3 +89,37 @@ header {
   position: relative;
   cursor: pointer;
 }
+
+.guest-display {
+  display:grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+}
+
+.booking-search-sect{
+  background-color: $translucent;
+  height: 84vh;
+
+}
+
+.main-guest-block {
+  background-color: $translucent;
+  margin-left: 3vh;
+}
+.guest-info {
+  background-color: $translucent;
+  height: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 3vh;
+}
+
+.card {
+  background-color: white;
+  color: #e0a458
+}
+.sample-img {
+  height: 100%;
+  width: 100%;
+}
+

@@ -81,9 +81,22 @@ describe.only('Guest', function () {
   it('should hold datasets for rooms', function () {
     expect(guest.allRooms).to.equal(allRooms);
   });
+
   it('should hold datasets for bookings', function () {
     expect(guest.allBookings).to.equal(bookings);
   });
+
+  it('should have a function that finds the users full name', function () {
+    guest.findName(3)
+    expect(guest.findName(3)).to.equal('Elma Hernandez');
+  });
+
+  it('this function find all bookings under guest name', function () {
+    guest.findName(1)
+    expect(guest.name).to.equal('Leata Rich');
+  });
+
+
 
   
 })

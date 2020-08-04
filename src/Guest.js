@@ -1,19 +1,44 @@
-import User from '../src/User';
+import Hotel from '../src/Hotel';
 
-class Guest extends User {
-  constructor(guestID, name) {
-    super(`customer${guestID}`)
+class Guest extends Hotel {
+  constructor(guestID, guestsData, roomData, bookingsData) {
+    super(guestsData, roomData, bookingsData)
     this.guestID = guestID
-    this.name = name
+    this.findName(this.guestID)
+    this.findPersonalBookings(this.name)
   }
 
-  //not sure if findBookings should go here
-  // findBookings(id) { 
-  //   const personalBookings = bookings.filter(booking => {
-  //     return booking.userID === this.guestID
-  //   })
-  //   this.personalBookings = personalBookings
-  // }
+  findName(usernameID) {
+    const signedIn = this.allUsers.find(guest => {
+
+      return guest.id === Number(usernameID)
+    })
+    this.name = signedIn.name
+    return this.name
+  }
+
+  findPersonalBookings(name) { 
+    const allGuestBookings = this.findGuestBookings(name)
+    if (allGuestBookings === 'Please try a different name') {
+      this.myBookings = []
+      return 'No Bookings Found!'
+    }
+    this.myBookings = allGuestBookings
+   
+  }
+
+  calcTotalAmountSpent() {
+    const totalSpent = this.myBookings.reduce((sum, booking) => {
+      this.allRooms.forEach(room => {
+        if(room.number === booking.roomNumber) {
+          sum += room.costPerNight
+        }
+      })
+      return sum
+    }, 0)
+    console.log('your toFixed', totalSpent)
+    return totalSpent.toFixed(2)
+  }
 }
 
 export default Guest

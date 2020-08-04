@@ -1,6 +1,6 @@
-import User from '../src/User';
+import Hotel from '../src/Hotel';
 
-class Manager extends User {
+class Manager extends Hotel {
   constructor(guestsData, roomData, bookingsData) {
     super(guestsData, roomData, bookingsData)
   }
@@ -18,9 +18,9 @@ class Manager extends User {
   }
 
   searchUserHistory(searchInput) {
-    const suspectedUser = this.allUsers.find(user => user.name.includes(searchInput))
+    const suspectedUser = this.allUsers.users.find(user => user.name.includes(searchInput))
     if (suspectedUser) {
-      return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+      return this.allBookings.bookings.filter(booking => suspectedUser.id === booking.userID)
     } else {
       return 'Please try a different name'
     }
@@ -33,8 +33,10 @@ class Manager extends User {
 
   calcPercentageOccupied(date) {
     const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date)
-    console.log('lives in manager class', this.allRooms.rooms.length)
-    return ((this.allRooms.rooms.length / bookedToday.length).toFixed(2))
+    if (bookedToday.length === 0) {
+      return 0
+    } 
+    return ((bookedToday.length / this.allRooms.rooms.length).toFixed(2)) * 100
   }
 
 

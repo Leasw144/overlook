@@ -66,6 +66,10 @@ header {
   display: none
 }
 
+.hidden * {
+  display: none
+}
+
 .search-bar {
   position: relative;
   border-radius: 5px;
@@ -115,8 +119,13 @@ header {
 }
 
 .card {
-  background-color: white;
+  background-color: #E8F1F2;
   color: #e0a458
+}
+
+.green-background {
+  background-color: #B3EFB2;
+  color: #696D7D
 }
 .sample-img {
   height: 100%;

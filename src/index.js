@@ -1,28 +1,28 @@
 // import fetchData from './fetchData';
+
 import moment from 'moment';
 let todaysDate = moment().format("YYYY/MM/DD");
-
 let hotel, manager, guest;
 
-function fetchUserData() {
+const fetchUserData = () => {
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(data => data.json())
     .catch(error => console.log('userData error'))
 }
 
-function fetchBookingData() {
+const fetchBookingData = () => {
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
     .then(data => data.json())
     .catch(error => console.log('bookingData error'))
 }
 
-function fetchRoomData() {
+const fetchRoomData = () =>{
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
     .then(data => data.json())
     .catch(error => console.log('bookingData error'))
 }
 
-function fetchAllData() {
+const fetchAllData = () => {
   const userData = fetchUserData()
   const bookingData = fetchBookingData()
   const roomData = fetchRoomData()
@@ -39,7 +39,6 @@ function fetchAllData() {
       return hotel
     })
 }
-
 
 const clickhandler = () => {
   // const submitLogin = document.querySelector('.submit')
@@ -90,8 +89,11 @@ import './css/base.scss';
  
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './assets/abstract.png'
+import './assets/account.png'
 import Hotel from './Hotel';
 import domUpdates from './domUpdates'
 import Manager from './Manager';
 import Guest from './Guest'
-// console.log('This is the JavaScript entry file - your code begins here.');
+import './css/base.scss';
+// import './css/styles.scss';

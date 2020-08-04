@@ -1,0 +1,31 @@
+.main-guest-block {
+  background-color: $translucent;
+  margin-left: 3vh;
+}
+
+.guest-display {
+  display:grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+}
+
+.booking-search-sect{
+  background-color: $translucent;
+  height: 84vh;
+
+}
+
+.box {
+    flex: 1 1 150px; /*  Stretching: */
+    flex: 0 1 150px; /*  No stretching: */
+    margin: 5px;
+}
+
+.manager-display {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: $translucent; 
+}
+
+

@@ -29,7 +29,7 @@ function fetchAllData() {
   
   return Promise.all([userData, roomData, bookingData])
     .then(data => {
-      hotel = new User(data[0], data[1], data[2])
+      hotel = new Hotel(data[0], data[1], data[2])
       hotel.createUsernames(data[0])
       // let allData = {}
       // allData.userData = data[0]
@@ -47,20 +47,30 @@ const clickhandler = () => {
     const userAttempt = document.querySelector('.username-input').value
     const pwAttempt = document.querySelector('.pw-input').value
     const loginOutcome = hotel.checkValidation(userAttempt, pwAttempt)
-    determineDash(loginOutcome)
+    determineDash(loginOutcome, userAttempt)
   }
 }
 
-const determineDash = (outcome) => {
+const determineDash = (outcome, userAttempt) => {
   domUpdates.todaysDate = todaysDate
+  console.log(userAttempt)
   if (outcome === 1) {
-    instantiateGuest()
+    instantiateGuest(userAttempt)
     domUpdates.sendToGuestDash()
   } else if (outcome === 0) {
     instantiateManager()
     domUpdates.sendToManagerDash(todaysDate)
   } else if (outcome === `Username or Password was entered incorrectly`) {
     this.displayLoginError(outcome)
+  }
+}
+
+const instantiateGuest = (username) => {
+  const regex = /customer([\d]+)/
+  const match = regex.exec(username)
+  if (match) {
+    guest = new Guest(match[1], hotel.allUsers.users, hotel.allRooms.rooms, hotel.allBookings.bookings)
+    console.log('instantiateGuests', guest)
   }
 }
 
@@ -80,7 +90,8 @@ import './css/base.scss';
  
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-import User from './User';
+import Hotel from './Hotel';
 import domUpdates from './domUpdates'
 import Manager from './Manager';
+import Guest from './Guest'
 // console.log('This is the JavaScript entry file - your code begins here.');

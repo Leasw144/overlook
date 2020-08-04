@@ -10,9 +10,9 @@ class Hotel {
   }
   
   createUsernames() {
-    // console.log('createUser', this.allUsers.users)
+    console.log('createUser', this.allUsers.users)
     const allUsernames = this.allUsers.users.map(guest => `customer${guest.id}`)
-    // console.log(allUsernames)
+    console.log(allUsernames)
     this.usernameLog = allUsernames
   }
 

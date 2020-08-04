@@ -12,7 +12,7 @@
       <h1>Welcome to the Overlook Hotel</h1>
     </header>
     <main>
-      <section class='manager-display'>
+      <section class='manager-display hidden'>
             <aside class='search-bar'>
               <h3>Find Guest History</h3>
               <span><input type='text' class='input' placeholder="search by booking">
@@ -20,7 +20,7 @@
             </aside>
           <article class="box">
             <h2>Total Rooms Available</h2>
-            <span class='display total-rooms-availble'>24</span>
+            <span class='display total-rooms-available'>24</span>
           </article>
 
           <article class="box">
@@ -36,7 +36,7 @@
 
           </section>
       </section>
-      <section class='login-box '>
+      <section class='login-box hidden'>
         <header class='login-header'> Log in </header>
 
         <form class='login-form'>
@@ -48,6 +48,58 @@
           <span class='error-login'></span>
 
         </form>
+      </section>
+      <section class='guest-display hidden'>
+        <aside class='booking-search-sect'>
+          <h3>Total amound Spent</h3>
+          <p class='total-amount-spent'></p>
+          <br>
+          <h3>Book your next stay!</h3>
+          <form>
+            <input type='date' class='calendar' min='2020-01-01' title='select date input'>
+            <select name='room-type' class='room-dropdown' title='room dropdown options'>
+              <option value='all rooms'>All Rooms</option>
+              <option value='residential suite'>Residential Suite</option>
+              <option value='suite'>Suite</option>
+              <option value='single room'>Single Room</option>
+              <option value='junior suite'>Junior Suite</option>
+            </select>
+          </form>
+        </aside>
+        <section class='main-guest-block'>
+          <h1>WELCOME BACK<span class='welcome-back'></span></h1>
+          <section class='guest-info'>
+            <article class='booked-rooms-display'>
+              <div class='card'>
+                <h3>Residential Suite</h3>
+                <p>probably a list goes here with the details of the room</p>
+                <article class='sample-img'>sample image would go here</article>
+              </div>
+            </article>
+            <article class='booked-rooms-display'>
+              <div class='card'>
+                <h3>Residential Suite</h3>
+                <p>probably a list goes here with the details of the room</p>
+                <article class='sample-img'>sample image would go here</article>
+              </div>
+            </article>
+            <article class='booked-rooms-display'>
+              <div class='card'>
+                <h3>Residential Suite</h3>
+                <p>probably a list goes here with the details of the room</p>
+                <article class='sample-img'>sample image would go here</article>
+              </div>
+            </article>
+            <article class='booked-rooms-display'>
+              <div class='card'>
+                <h3>Residential Suite</h3>
+                <p>probably a list goes here with the details of the room</p>
+                <article class='sample-img'>sample image would go here</article>
+              </div>
+            </article>
+          </section>
+        </section>
+
       </section>
     </main>
 

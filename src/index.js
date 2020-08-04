@@ -2,7 +2,7 @@
 import moment from 'moment';
 let todaysDate = moment().format("YYYY/MM/DD");
 
-let hotel = null
+let hotel, manager, guest;
 
 function fetchUserData() {
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
@@ -27,11 +27,10 @@ function fetchAllData() {
   const bookingData = fetchBookingData()
   const roomData = fetchRoomData()
   
-  return Promise.all([userData, bookingData, roomData])
+  return Promise.all([userData, roomData, bookingData])
     .then(data => {
       hotel = new User(data[0], data[1], data[2])
       hotel.createUsernames(data[0])
-      console.log(hotel)
       // let allData = {}
       // allData.userData = data[0]
       // allData.bookingData = data[1]
@@ -48,8 +47,28 @@ const clickhandler = () => {
     const userAttempt = document.querySelector('.username-input').value
     const pwAttempt = document.querySelector('.pw-input').value
     const loginOutcome = hotel.checkValidation(userAttempt, pwAttempt)
-    domUpdates.determineDash(loginOutcome)
+    determineDash(loginOutcome)
   }
+}
+
+const determineDash = (outcome) => {
+  domUpdates.todaysDate = todaysDate
+  if (outcome === 1) {
+    instantiateGuest()
+    domUpdates.sendToGuestDash()
+  } else if (outcome === 0) {
+    instantiateManager()
+    domUpdates.sendToManagerDash(todaysDate)
+  } else if (outcome === `Username or Password was entered incorrectly`) {
+    this.displayLoginError(outcome)
+  }
+}
+
+const instantiateManager = () => {
+  manager = new Manager(hotel.allUsers, hotel.allRooms, hotel.allBookings)
+  console.log('this guy lives in index', todaysDate)
+  domUpdates.currentUser = manager
+  
 }
 
 
@@ -63,4 +82,5 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import User from './User';
 import domUpdates from './domUpdates'
+import Manager from './Manager';
 // console.log('This is the JavaScript entry file - your code begins here.');

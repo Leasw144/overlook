@@ -5,10 +5,10 @@ class Manager extends User {
     super(guestsData, roomData, bookingsData)
   }
 
-  calculateRevenue(date) {
-    let todaysBookings = this.allBookings.filter(booking => booking.date === date)
+  calcRevenue(date) {
+    let todaysBookings = this.allBookings.bookings.filter(booking => booking.date === date)
     return todaysBookings.reduce((todaysRevenue, todaysBooking) => {
-      this.allRooms.forEach(room => {
+      this.allRooms.rooms.forEach(room => {
         if (room.number === todaysBooking.roomNumber) {
           todaysRevenue += room.costPerNight
         }
@@ -27,13 +27,14 @@ class Manager extends User {
   }
 
   findTotalOpenRooms(date) {
-    const bookedToday = this.allBookings.filter(booking => booking.date === date) 
-    return this.allRooms.length - bookedToday.length
+    const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date) 
+    return this.allRooms.rooms.length - bookedToday.length
   }
 
   calcPercentageOccupied(date) {
-    const bookedToday = this.allBookings.filter(booking => booking.date === date)
-    return ((bookedToday.length / this.allRooms.length).toFixed(4)) * 100
+    const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date)
+    console.log('lives in manager class', this.allRooms.rooms.length)
+    return ((this.allRooms.rooms.length / bookedToday.length).toFixed(2))
   }
 
 

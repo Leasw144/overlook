@@ -1,18 +1,28 @@
 const domUpdates = {
-
+  currentUser: null,
+  todaysDate: null,
   determineDash(outcome) {
     if (outcome === 1) {
       console.log('it worked')
       this.sendToGuestDash()
     } else if (outcome === 0) {
-      this.sendToManagerDash() 
+      this.sendToManagerDash(this.todaysDate) 
     } else if (outcome === `Username or Password was entered incorrectly`) {
       this.displayLoginError(outcome)
     }
   },
 
-  sendToManagerDash() {
-    console.log('working')
+  sendToManagerDash(date) {
+    document.querySelector('.login-box').classList.add('hidden')
+    document.querySelector('.manager-display').classList.remove('hidden')
+    this.updateManagerStats(date)
+  },
+
+  updateManagerStats(date) {
+    console.log(this.currentUser)
+    document.querySelector('.total-rooms-available').innerText = this.currentUser.findTotalOpenRooms(date)
+    document.querySelector('.todays-revenue').innerText = `$${this.currentUser.calcRevenue(date)}`
+    document.querySelector('.occupancy').innerText = `${this.currentUser.calcPercentageOccupied(date)}%`
   },
 
   sendToGuestDash() {

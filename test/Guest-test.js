@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import Manager from '../src/Manager'
+import Guest from '../src/Guest'
 
-describe('Guest', function () {
-  let bookings, allRooms, allUsers, manager, user;
+describe.only('Guest', function () {
+  let bookings, allRooms, allUsers, guest;
   beforeEach(() => {
     allUsers = [
       {
@@ -67,9 +67,23 @@ describe('Guest', function () {
         "roomServiceCharges": []
       }
     ]
-    manager = new Manager(allUsers, allRooms, bookings)
+    guest = new Guest(1, allUsers, allRooms, bookings)
 
   })
   it('should be a function', function () {
-    expect(Manager).to.be.a('function');
+    expect(Guest).to.be.a('function');
   });
+
+  it('should hold datasets for users', function () {
+    expect(guest.allUsers).to.equal(allUsers);
+  });
+
+  it('should hold datasets for rooms', function () {
+    expect(guest.allRooms).to.equal(allRooms);
+  });
+  it('should hold datasets for bookings', function () {
+    expect(guest.allBookings).to.equal(bookings);
+  });
+
+  
+})

@@ -28,11 +28,28 @@ const domUpdates = {
   sendToGuestDash() {
     document.querySelector('.login-box').classList.add('hidden')
     document.querySelector('.guest-display').classList.remove('hidden')
-    this.updateGuestStats(date)
+    this.updateGuestStats()
   },
 
   updateGuestStats(date) {
-    console.log(this.currentUser)
+    document.querySelector('.total-amount-spent').innerText = this.currentUser.calcTotalAmountSpent()
+    document.querySelector('.welcome-back').innerText = this.currentUser.name
+    this.currentUser.myBookings.forEach(booking => {
+      document.querySelector('.booked-rooms-display').insertAdjacentHTML('beforebegin',
+        `
+        <article class='card'>
+          <h3>Date Booked: ${booking.date}</h3>
+          <div class='green-background'>
+            <ul>
+            <li>Booking Number: ${booking.id}</li>
+            <li>Room Number: ${booking.roomNumber}</li>
+            <li></li>
+            </ul>
+          <div class='green-background'>
+        </article>
+        `
+      )
+    })
   },
 
   displayLoginError(outcome) {

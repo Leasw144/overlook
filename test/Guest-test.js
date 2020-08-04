@@ -91,10 +91,28 @@ describe.only('Guest', function () {
     expect(guest.findName(3)).to.equal('Elma Hernandez');
   });
 
-  it('this function find all bookings under guest name', function () {
+  it('should have a function that finds the users full name', function () {
     guest.findName(1)
     expect(guest.name).to.equal('Leata Rich');
   });
+
+  it('should find all bookings under guest name', function () {
+    guest.findPersonalBookings('Leata Rich')
+    expect(guest.myBookings).to.deep.equal([
+      {
+        id: '5fwrgu4i7k55hl6sz',
+        userID: 1,
+        date: '2020/04/22',
+        roomNumber: 1,
+        roomServiceCharges: []
+      }
+    ]);
+  })
+
+  it('should result in an empty array if no bookings were found', function () {
+    guest.findPersonalBookings()
+    expect(guest.myBookings).to.deep.equal([]);
+  })
 
 
 

@@ -5,6 +5,7 @@ class Guest extends Hotel {
     super(guestsData, roomData, bookingsData)
     this.guestID = guestID
     this.findName(this.guestID)
+    this.findPersonalBookings(this.name)
   }
 
   findName(usernameID) {
@@ -13,13 +14,12 @@ class Guest extends Hotel {
       return guest.id === Number(usernameID)
     })
     this.name = signedIn.name
+    return this.name
   }
   //not sure if findBookings should go here
-  findBookings(id) { 
-    const personalBookings = bookings.filter(booking => {
-      return booking.userID === this.guestID
-    })
-    this.personalBookings = personalBookings
+  findPersonalBookings(name) { 
+    const allGuestBookings = this.findGuestBookings(name)
+    this.myBookings = allGuestBookings
   }
 }
 

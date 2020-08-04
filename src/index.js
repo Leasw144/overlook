@@ -56,10 +56,10 @@ const determineDash = (outcome, userAttempt) => {
   console.log(userAttempt)
   if (outcome === 1) {
     instantiateGuest(userAttempt)
-    domUpdates.sendToGuestDash()
+    domUpdates.sendToGuestDash(todaysDate)
   } else if (outcome === 0) {
     instantiateManager()
-    domUpdates.sendToManagerDash(todaysDate)
+    domUpdates.sendToManagerDash(todaysDate) 
   } else if (outcome === `Username or Password was entered incorrectly`) {
     this.displayLoginError(outcome)
   }
@@ -70,6 +70,7 @@ const instantiateGuest = (username) => {
   const match = regex.exec(username)
   if (match) {
     guest = new Guest(match[1], hotel.allUsers.users, hotel.allRooms.rooms, hotel.allBookings.bookings)
+    domUpdates.currentUser = guest
     console.log('instantiateGuests', guest)
   }
 }
@@ -78,7 +79,6 @@ const instantiateManager = () => {
   manager = new Manager(hotel.allUsers, hotel.allRooms, hotel.allBookings)
   console.log('this guy lives in index', todaysDate)
   domUpdates.currentUser = manager
-  
 }
 
 

@@ -19,6 +19,10 @@ class Guest extends Hotel {
   //not sure if findBookings should go here
   findPersonalBookings(name) { 
     const allGuestBookings = this.findGuestBookings(name)
+    if (allGuestBookings === 'Please try a different name') {
+      this.myBookings = []
+      return 'No Bookings Found!'
+    }
     this.myBookings = allGuestBookings
   }
 }

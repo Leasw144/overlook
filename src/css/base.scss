@@ -27,7 +27,6 @@ header {
   box-sizing: border-box;
   padding: 1vh 4vh;
   font-size: 12px;
-  // display:none
 }
 
 .account-avatar {
@@ -120,11 +119,19 @@ header {
 }
 
 .card {
-  background-color: white;
+  background-color: #E8F1F2;
   color: #e0a458
+}
+
+.green-background {
+  background-color: #B3EFB2;
+  color: #696D7D
 }
 .sample-img {
   height: 100%;
   width: 100%;
 }
 
+.book-form {
+  
+}

@@ -1,134 +1,14 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-$translucent: rgba(60, 60, 60, .60);;
+
+@import 'interactive';
+@import 'structure';
+@import 'styles';
+@import 'cards';
+@import 'reset';
+$translucent: rgba(60, 60, 60, 0.60);
 
 body {
-  background: url(../assets/maldives-3.jpg);
+  background: url(../images/maldives-huts-two.jpg) fixed;
   font-family: recursive;
-  color:white
+  color:pink
 }
-
-header {
-  background-color: $translucent;
-
-}
-.display{
-  font-size: 8vh;
-}
-
-.login-box {
-  width: 320px;
-  height: 420px;
-  background-color: $translucent;
-  position:absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
-  padding: 1vh 4vh;
-  font-size: 12px;
-}
-
-.account-avatar {
-  // background-image: url(../assets/account.png);
-  width: 500px;
-  height: 500px;
-}
-
-.login-header {
-  background-color: bottom;
-  font-size: 6vh;
-  display: flex;
-  justify-content: center;
-}
-
-.manager-display {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: $translucent;
-}
-
-.box {
-    flex: 1 1 150px; /*  Stretching: */
-    flex: 0 1 150px; /*  No stretching: */
-    margin: 5px;
-  }
-// .login-form < * {
-//   font-size: 3vh;
-//   padding{ 0vh}
-//   margin: 0px
-
-// }
-
-.hidden {
-  display: none
-}
-
-.hidden * {
-  display: none
-}
-
-.search-bar {
-  position: relative;
-  border-radius: 5px;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-}
-
-.wrapper .input {
-  width: 85%;
-  padding: 15px 20px;
-  border:none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.search-button {
-  background: ffec00;
-  width: 10%;
-  border-radius: 5px;
-  position: relative;
-  cursor: pointer;
-}
-
-.guest-display {
-  display:grid;
-  grid-template-columns: minmax(150px, 25%) 1fr;
-}
-
-.booking-search-sect{
-  background-color: $translucent;
-  height: 84vh;
-
-}
-
-.main-guest-block {
-  background-color: $translucent;
-  margin-left: 3vh;
-}
-.guest-info {
-  background-color: $translucent;
-  height: auto;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, 1fr);
-  margin-left: 3vh;
-}
-
-.card {
-  background-color: #E8F1F2;
-  color: #e0a458
-}
-
-.green-background {
-  background-color: #B3EFB2;
-  color: #696D7D
-}
-.sample-img {
-  height: 100%;
-  width: 100%;
-}
-

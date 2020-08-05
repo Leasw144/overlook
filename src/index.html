@@ -3,13 +3,13 @@
   <head>
     <title>Overlook Hotel</title>
     <link rel='stylesheet' type='text/scss' href='base.scss'>
-    <meta name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header> 
-      <img href='../src/assets/abstract.png'>
-      <h1>Welcome to the overlook2020 Hotel</h1>
+    <header class='main-header'> 
+      <img class='icon' src='./images/abstract.png' alt='logo'>
+      <h1>The Overlook Hotel</h1>
     </header>
     <main>
       <section class='manager-display hidden'>
@@ -18,35 +18,35 @@
               <span><input type='text' class='input' placeholder="search by booking">
               <button type='search-button'></button></span>
             </aside>
-          <article class="box">
-            <h2>Total Rooms Available</h2>
-            <span class='display total-rooms-available'>24</span>
-          </article>
+          <section>
+            <article class="box">
+              <h2>Total Rooms Available</h2>
+              <span class='display total-rooms-available'>24</span>
+            </article>
+            <article class="box">
+              <h2>Todays Revenue</h2>
+              <span class='display todays-revenue'>$1140</span>
+            </article>
+            <article class="box">
+              <h2>Today's occupancy</h2>
+              <span class='display occupancy'>74%</span>
+            </article>
+          </section>
 
-          <article class="box">
-            <h2>Todays Revenue</h2>
-            <span class='display todays-revenue'>$1140</span>
-          </article>
-
-          <article class="box">
-            <h2>Today's occupancy</h2>
-            <span class='display occupancy'>74%</span>
-          </article>
           <section class='target-search'>
-
           </section>
       </section>
       <section class='login-box'>
         <header class='login-header'> Log in </header>
-
+        <img class='account' src='./images/account.png'>
         <form class='login-form'>
-          <p>Username</p>
-          <input type='text' name='Username' class='username-input' aria-placeholder="Enter Username">
-          <p>Password</p>
-          <input type='password' name='password' class='pw-input' aria-placeholder="Enter Password"><br>
+          <p>Username</p>       
+            <input type='text' name='Username' class='username-input' aria-label='username' aria-placeholder="Enter Username"> 
+          <p>Password</p>     
+            <input aria-label='password' type='password' name='password' class='pw-input' aria-placeholder="Enter Password">     
+          <br>
           <button type="button" class='login-submit'> submit</button>
           <span class='error-login'></span>
-
         </form>
       </section>
       <section class='guest-display hidden'>
@@ -56,7 +56,9 @@
           <br>
           <h3>Book your next stay!</h3>
           <form class='book-form'>
-            <input type='date' class='calendar' min='2020-01-01' title='select date input'>
+            <label>Calendar
+              <input type='date' class='calendar' min='2020-01-01' title='select date input'>
+            </label>
             <select name='room-type' class='room-dropdown' title='room dropdown options'>
               <option value='all rooms'>All Rooms</option>
               <option value='residential suite'>Residential Suite</option>
@@ -64,24 +66,17 @@
               <option value='single room'>Single Room</option>
               <option value='junior suite'>Junior Suite</option>
             </select>
-            <button type='button'>submit</button>
+            <button class='availability-request-btn' type='button'>submit</button>
           </form>
         </aside>
         <section class='main-guest-block'>
           <h1 class='welcome-back'></h1>
           <section class='guest-info'>
-            <article class='booked-rooms-display'>
-              
+            <article class='booked-rooms-display'> 
             </article>
           </section>
         </section>
-
       </section>
     </main>
-
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
-<!-- Icons made by <a href="https://www.flaticon.com/free-icon/user_1246351?term=account&page=1&position=1"
-  title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->

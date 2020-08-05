@@ -1,3 +1,23 @@
+.main-header {
+  display: flex;
+  icon {
+    width: 13vh;
+    margin: 2vh;
+  }
+  h1 {
+    padding: 3vh;
+    font-size: 7vh;
+    margin: 10px;
+  }
+}
+
+.login-header {
+  background-color: bottom;
+  font-size: 6vh;
+  display: flex;
+  justify-content: center;
+}
+
 .main-guest-block {
   background-color: $translucent;
   margin-left: 3vh;
@@ -6,12 +26,21 @@
 .guest-display {
   display:grid;
   grid-template-columns: minmax(150px, 25%) 1fr;
-}
-
-.booking-search-sect{
+  margin-top: 4vh;
+  .booking-search-sect {
+    background-color: rgba(60, 60, 60, 0.6);
+    height: 84vh;
+    margin-left: 1vh;
+        padding: 2vh;
+  }
+  .main-guest-block{
   background-color: $translucent;
-  height: 84vh;
-
+  margin-left: 3vh;
+    h1 {
+      padding: 3vh;
+      font-size: 5vh;
+    }
+  }
 }
 
 .box {
@@ -21,11 +50,7 @@
 }
 
 .manager-display {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  background-color: $translucent; 
+    display: flex;
+    justify-content: space-around;
+    margin: 2vh;
 }
-
-

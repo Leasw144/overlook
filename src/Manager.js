@@ -7,7 +7,7 @@ class Manager extends Hotel {
 
   calcRevenue(date) {
     let todaysBookings = this.allBookings.bookings.filter(booking => booking.date === date)
-    return todaysBookings.reduce((todaysRevenue, todaysBooking) => {
+    const revenueMade = todaysBookings.reduce((todaysRevenue, todaysBooking) => {
       this.allRooms.rooms.forEach(room => {
         if (room.number === todaysBooking.roomNumber) {
           todaysRevenue += room.costPerNight
@@ -15,6 +15,7 @@ class Manager extends Hotel {
       })
       return todaysRevenue
     }, 0)
+    return `$${revenueMade.toFixed(2)}`
   }
 
   searchUserHistory(searchInput) {
@@ -36,7 +37,7 @@ class Manager extends Hotel {
     const estimatedResult = (bookedToday.length / this.allRooms.rooms.length).toFixed(2) * 100
     if (bookedToday.length === 0) {
       return `0%`
-    } else if(estimatedResult >= 100) {
+    } else if (estimatedResult >= 100) {
       return 'You have overbooked!'
     }
   }

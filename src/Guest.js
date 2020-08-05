@@ -36,8 +36,13 @@ class Guest extends Hotel {
       })
       return sum
     }, 0)
-    console.log('your toFixed', totalSpent)
     return totalSpent.toFixed(2)
+  }
+
+  findMeAvailRooms(roomType, room) {
+    // const bookingsThisDay = this.allBookings.filter(booking => {
+
+    // })
   }
 }
 

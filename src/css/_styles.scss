@@ -1,161 +1,74 @@
-@import 'reset';
-@import 'interactive';
-@import 'structure';
-@import 'styles';
-@import 'cards';
+$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 
-// .hidden {
-//   display: none
-// }
 
-// .hidden * {
-//   display: none
-// }
+$translucent: rgba(60, 60, 60, 0.60);
 
-// .account-avatar {
-//   // background-image: url(../assets/account.png);
-//   width: 500px;
-//   height: 500px;
-// }
+.hidden {
+  display: none
+}
 
-// .login-header {
-//   background-color: bottom;
-//   font-size: 6vh;
-//   display: flex;
-//   justify-content: center;
-// }
+.hidden * {
+  display: none
+}
 
-// header {
-//   background-color: $translucent;
-// }
+.account-avatar {
+  background-image: url(../images/account.png);
+  width: 500px;
+  height: 500px;
+}
 
-// body {
-//   background: url(../assets/maldives-3.jpg);
-//   font-family: recursive;
-//   color:white
-// }
+body {
+  background: url(../images/maldives-3.jpg);
+  font-family: recursive;
+  color:white
+}
 
-// header {
-//   background-color: $translucent;
+header {
+  background-color: $translucent;
 
-// }
-// .display{
-//   font-size: 8vh;
-// }
+}
+.display{
+  font-size: 8vh;
+}
 
-// .login-box {
-//   width: 320px;
-//   height: 420px;
-//   background-color: $translucent;
-//   position:absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   box-sizing: border-box;
-//   padding: 1vh 4vh;
-//   font-size: 12px;
-// }
+.account-avatar {
+  // background-image: url(../assets/account.png);
+  width: 500px;
+  height: 500px;
+}
 
-// .account-avatar {
-//   // background-image: url(../assets/account.png);
-//   width: 500px;
-//   height: 500px;
-// }
+.manager-display {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: $translucent;
+}
 
-// .login-header {
-//   background-color: bottom;
-//   font-size: 6vh;
-//   display: flex;
-//   justify-content: center;
-// }
+.hidden {
+  display: none
+}
 
-// .manager-display {
-//   width: 100%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-around;
-//   background-color: $translucent;
-// }
+.hidden * {
+  display: none
+}
 
-// .box {
-//     flex: 1 1 150px; /*  Stretching: */
-//     flex: 0 1 150px; /*  No stretching: */
-//     margin: 5px;
-//   }
-// // .login-form < * {
-// //   font-size: 3vh;
-// //   padding{ 0vh}
-// //   margin: 0px
+.guest-info {
+  background-color: $translucent;
+  height: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 3vh;
+}
 
-// // }
+.sample-img {
+  height: 100%;
+  width: 100%;
+}
 
-// .hidden {
-//   display: none
-// }
-
-// .hidden * {
-//   display: none
-// }
-
-// .search-bar {
-//   position: relative;
-//   border-radius: 5px;
-//   display: flex;
-//   justify-content: flex-start;
-//   flex-direction: column;
-// }
-
-// .wrapper .input {
-//   width: 85%;
-//   padding: 15px 20px;
-//   border:none;
-//   border-radius: 5px;
-//   font-weight: bold;
-// }
-
-// .search-button {
-//   background: ffec00;
-//   width: 10%;
-//   border-radius: 5px;
-//   position: relative;
-//   cursor: pointer;
-// }
-
-// .guest-display {
-//   display:grid;
-//   grid-template-columns: minmax(150px, 25%) 1fr;
-// }
-
-// .booking-search-sect{
-//   background-color: $translucent;
-//   height: 84vh;
-
-// }
-
-// .main-guest-block {
-//   background-color: $translucent;
-//   margin-left: 3vh;
-// }
-// .guest-info {
-//   background-color: $translucent;
-//   height: auto;
-//   display: grid;
-//   gap: 1rem;
-//   grid-template-columns: repeat(3, 1fr);
-//   margin-left: 3vh;
-// }
-
-// .card {
-//   background-color: #E8F1F2;
-//   color: #e0a458
-// }
-
-// .green-background {
-//   background-color: #B3EFB2;
-//   color: #696D7D
-// }
-// .sample-img {
-//   height: 100%;
-//   width: 100%;
-// }
+.icon {
+  width: 13vh;
+    margin: 2vh;
+}
 

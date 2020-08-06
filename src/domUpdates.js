@@ -41,8 +41,30 @@ const domUpdates = {
     })
   },
 
-  findAvailRooms(room, date) {
-    // const openRooms = this.currentUser.findMeAvailRooms(room, date)
+  displayAvailableRooms(room, date) {
+    const openRooms = this.currentUser.findMeAvailRooms(room, date)
+    if (openRooms.length > 0) {
+      document.querySelector('.guest-info').innerText = ''
+      openRooms.forEach(room => {
+        document.querySelector('.guest-info').insertAdjacentHTML('beforebegin',
+          `
+          <article class='card'>
+            <h3>Available Today</h3>
+            <div class='transluscent'>
+              <p> Room: ${room.roomType}</p>
+              <p>Bed Type ${room.bedSize}</p>
+              <p>Number of Beds ${room.numBeds}</p>
+              <p>Room Number ${room.number}</p>
+              <h3>Price: $${room.costPerNight}</h3>
+              <button class="book-me" aria-label='Submit booking' value=${room.number} type='button'>Book me</button>
+            </div>
+          </article>
+          `
+        )
+      })
+    } else {
+      return `WE ARE SO SORRY THERE ARE NO ROOMS OMG`
+    }
   },
 
   displayLoginError(outcome) {

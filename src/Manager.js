@@ -34,7 +34,6 @@ class Manager extends Hotel {
 
   calcPercentageOccupied(date) {
     const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date)
-    console.log('calcPerc', this.allRooms.rooms.length)
     const estimatedResult = (bookedToday.length / this.allRooms.rooms.length).toFixed(2) * 100
     if (bookedToday.length === 0) {
       return `0%`

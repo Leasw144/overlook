@@ -57,7 +57,8 @@ class Guest extends Hotel {
           freeRooms.push(room)
         }
       })
-      return freeRooms
+
+      return [...new Set(freeRooms)]
     }, [])
   }
 

@@ -62,6 +62,10 @@ const clickhandler = () => {
     determineDash(loginOutcome, userAttempt)
   } else if (event.target.closest('.availability-request-btn')) {
     findAvailRooms()
+  } else if (event.target.closest('.book-me')) {
+    let calendarDate = document.querySelector('.calendar').value
+    postPrep(calendarDate)
+
   }
 }
 
@@ -78,11 +82,17 @@ const determineDash = (outcome, userAttempt) => {
   }
 }
 
-//under construction
+const postPrep = (calendarDate) => {
+  const roomNumber = document.querySelector('.book-me').value
+  calendarDate.split('-').join('/')
+
+  console.log(roomNumber)
+}
+
 const findAvailRooms = () => {
   const roomType = document.querySelector('.room-dropdown').value
   const selectedDate = document.querySelector('.calendar').value
-  domUpdates.findAvailRooms(roomType, selectedDate)
+  domUpdates.displayAvailableRooms(roomType, selectedDate)
 }
 
 const instantiateGuest = (username) => {

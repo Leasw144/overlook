@@ -40,6 +40,7 @@ class Manager extends Hotel {
     } else if (estimatedResult >= 100) {
       return 'You have overbooked!'
     }
+    return `${estimatedResult}%`
   }
 }
 

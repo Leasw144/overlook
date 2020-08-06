@@ -1,5 +1,5 @@
 $translucent: rgba(60, 60, 60, 0.60);
-
+$lightBlue:  #BDDBD0;
 
 .login-box {
   width: 320px;
@@ -42,13 +42,16 @@ $translucent: rgba(60, 60, 60, 0.60);
   border-radius: 5px;
   position: relative;
   cursor: pointer;
+  background-color: #BDDBD0;;
 }
 
 .login-box {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   .account {
-    width: 13vh;
-    padding-top: 4vh;
-    margin-left: 11vh;
+    width: 9vh;
+    margin-left: 8vh;
   }
   form {
     display: flex;
@@ -59,4 +62,6 @@ $translucent: rgba(60, 60, 60, 0.60);
       border-radius: 5px;
     }
   }
+
 }
+

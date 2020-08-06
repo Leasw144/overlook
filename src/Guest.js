@@ -39,11 +39,29 @@ class Guest extends Hotel {
     return totalSpent.toFixed(2)
   }
 
-  findMeAvailRooms(roomType, room) {
-    // const bookingsThisDay = this.allBookings.filter(booking => {
+  findMeAvailRooms(roomType, date) {
+    const selectedDate = date.split('-').join('/')
+    let matchedByRoomType = this.allRooms
+    let dateBookings = this.allBookings.filter(booking => {
+      return booking.date === selectedDate
+    })
+    if (roomType !== 'all rooms') {
+      matchedByRoomType = this.allRooms.filter(room => {
+        return room.roomType === roomType
+      })
+    }
 
-    // })
+    return matchedByRoomType.reduce((freeRooms, room) => {
+      dateBookings.forEach(booking => {
+        if (booking.roomNumber !== room.number) {
+          freeRooms.push(room)
+        }
+      })
+
+      return [...new Set(freeRooms)]
+    }, [])
   }
+
 }
 
 export default Guest

@@ -33,6 +33,23 @@ const fetchRoomData = () =>{
     .catch(error => console.log('bookingData error'))
 }
 
+const postIt = (guestID, roomNumber, selectedDate) => {
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: Number(guestID),
+      date: selectedDate,
+      roomNumber: Number(roomNumber)
+    })
+  })
+    .then(response => response.json())
+    .then(data => console.log('postme', data))
+    .catch(error => console.error(error))
+}
+
 const fetchAllData = () => {
   const userData = fetchUserData()
   const bookingData = fetchBookingData()
@@ -42,11 +59,6 @@ const fetchAllData = () => {
     .then(data => {
       hotel = new Hotel(data[0], data[1], data[2])
       hotel.createUsernames(data[0])
-      // let allData = {}
-      // allData.userData = data[0]
-      // allData.bookingData = data[1]
-      // allData.roomData = data[2]
-      // instantiateData(allData)
       return hotel
     })
 }
@@ -62,8 +74,10 @@ const clickhandler = () => {
     determineDash(loginOutcome, userAttempt)
   } else if (event.target.closest('.availability-request-btn')) {
     findAvailRooms()
-    // domUpdates.displayAvailRooms(todaysDate)
-  }
+  } else if (event.target.closest('.book-me')) {
+    let calendarDate = document.querySelector('.calendar').value
+    postPrep(calendarDate)
+  } 
 }
 
 /////////////INSTANTIATIONS AND DOM EXECUTIONS///////////
@@ -79,11 +93,17 @@ const determineDash = (outcome, userAttempt) => {
   }
 }
 
-//under construction
+const postPrep = (calendarDate) => {
+  const roomNumber = event.target.value
+  const moddedDate = calendarDate.split('-').join('/')
+  postIt(guest.guestID, roomNumber, moddedDate)
+  domUpdates.removeOpening(roomNumber, moddedDate)
+}
+
 const findAvailRooms = () => {
   const roomType = document.querySelector('.room-dropdown').value
   const selectedDate = document.querySelector('.calendar').value
-  domUpdates.findAvailRooms(roomType, selectedDate)
+  domUpdates.displayAvailableRooms(roomType, selectedDate)
 }
 
 const instantiateGuest = (username) => {

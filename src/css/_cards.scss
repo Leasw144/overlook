@@ -1,0 +1,22 @@
+.card {
+  background-color: #E8F1F2;
+  color: #e0a458
+}
+
+.green-background {
+  background-color: #B3EFB2;
+  color: #696D7D
+}
+.sample-img {
+  height: 100%;
+  width: 100%;
+}
+
+.guest-info {
+  background-color: $translucent;
+  height: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 3vh;
+}

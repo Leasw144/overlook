@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import User from '../src/User';
+import Hotel from '../src/Hotel';
 // import Guest from '../src/Guest'
 
-describe.only('User', function () {
-  let bookings, user, allRooms, allUsers;
+describe.only('Hotel', function () {
+  let bookings, hotel, allRooms, allUsers;
   beforeEach(() => {
     allUsers = [
       {
@@ -62,44 +62,44 @@ describe.only('User', function () {
       }
     ]
 
-    user = new User(allUsers)
-    user.allBookings = bookings
-    user.allRooms = allRooms
-    user.allUsers = allUsers
+    hotel = new Hotel(allUsers, allRooms, bookings)
+    // hotel.allBookings = bookings
+    // hotel.allRooms = allRooms
+    // hotel.allUsers = allUsers
   })
   it('should be a function', function () {
-    expect(User).to.be.a('function');
+    expect(hotel).to.be.a('function');
   });
   
   it('should store booking data', () => {
-    expect(user.allBookings).to.deep.equal(bookings);
+    expect(hotel.allBookings).to.deep.equal(bookings);
   })
 
   it('should store room data', () => {
-    expect(user.allRooms).to.deep.equal(allRooms);
+    expect(hotel.allRooms).to.deep.equal(allRooms);
   })
   it('should store all user information', () => {
-    expect(user.allUsers).to.deep.equal(allUsers);
+    expect(hotel.allUsers).to.deep.equal(allUsers);
   })
 
   it('should have a log of all usernames', () => {
-    expect(user.usernameLog).to.deep.equal(['customer1', 'customer2', 'customer3'])
+    expect(hotel.usernameLog).to.deep.equal(['customer1', 'customer2', 'customer3'])
   })
 
   it('should be able to validate a user if their credentials are correct', () => {
-    expect(user.checkValidation('customer1', 'overlook2020')).to.equal(true)
+    expect(hotel.checkValidation('customer1', 'overlook2020')).to.equal(true)
   })
 
   it('should accept if a string of manager is entered', () => {
-    expect(user.checkValidation('manager', 'overlook2020')).to.equal(true)
+    expect(hotel.checkValidation('manager', 'overlook2020')).to.equal(true)
   })
 
   it('should return an error message if either or both fields are not satisfied', () => {
-    expect(user.checkValidation('customer1', 'Overlook2020')).to.equal(`Username or Password was entered incorrectly`)
+    expect(hotel.checkValidation('customer1', 'Overlook2020')).to.equal(`Username or Password was entered incorrectly`)
   })
 
   it('should return an error message if either or both fields are not satisfied', () => {
-    expect(user.checkValidation()).to.equal(`Username or Password was entered incorrectly`)
+    expect(hotel.checkValidation()).to.equal(`Username or Password was entered incorrectly`)
   })
   // it('should have a method that creates a list of usernames', () => {
   //   expect(user.allUsernames).to.equal(allUsers)

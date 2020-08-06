@@ -1,37 +1,47 @@
-// import fetchData from './fetchData';
+//////////Imports/////////
+import Hotel from './Hotel';
+import domUpdates from './domUpdates'
+import Manager from './Manager';
+import Guest from './Guest';
+import './images/turing-logo.png';
+import './images/abstract.png';
+import './images/account.png';
+import './images/maldives-huts-two.jpg';
+import './css/base.scss';
 import moment from 'moment';
+
+//////////GLOBAL VARIABLES//////
 let todaysDate = moment().format("YYYY/MM/DD");
+let hotel, manager, guest;
 
-let hotel = null
-
-function fetchUserData() {
+//////////DATA HANDLING/////////
+const fetchUserData = () => {
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
     .then(data => data.json())
     .catch(error => console.log('userData error'))
 }
 
-function fetchBookingData() {
+const fetchBookingData = () => {
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
     .then(data => data.json())
     .catch(error => console.log('bookingData error'))
 }
 
-function fetchRoomData() {
+const fetchRoomData = () =>{
   return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
     .then(data => data.json())
     .catch(error => console.log('bookingData error'))
 }
 
-function fetchAllData() {
+const fetchAllData = () => {
   const userData = fetchUserData()
   const bookingData = fetchBookingData()
   const roomData = fetchRoomData()
   
-  return Promise.all([userData, bookingData, roomData])
+  return Promise.all([userData, roomData, bookingData])
     .then(data => {
-      hotel = new User(data[0], data[1], data[2])
+      hotel = new Hotel(data[0], data[1], data[2])
       hotel.createUsernames(data[0])
-      console.log(hotel)
       // let allData = {}
       // allData.userData = data[0]
       // allData.bookingData = data[1]
@@ -41,26 +51,55 @@ function fetchAllData() {
     })
 }
 
-
+//////////////////////////CLICK HANDLER//////////////////
 const clickhandler = () => {
+  domUpdates.todaysDate = todaysDate
   // const submitLogin = document.querySelector('.submit')
   if (event.target.closest('.login-submit')) {
     const userAttempt = document.querySelector('.username-input').value
     const pwAttempt = document.querySelector('.pw-input').value
     const loginOutcome = hotel.checkValidation(userAttempt, pwAttempt)
-    domUpdates.determineDash(loginOutcome)
+    determineDash(loginOutcome, userAttempt)
+  } else if (event.target.closest('.availability-request-btn')) {
+    findAvailRooms()
+    // domUpdates.displayAvailRooms(todaysDate)
   }
 }
 
+/////////////INSTANTIATIONS AND DOM EXECUTIONS///////////
+const determineDash = (outcome, userAttempt) => {
+  if (outcome === 1) {
+    instantiateGuest(userAttempt)
+    domUpdates.sendToGuestDash(todaysDate)
+  } else if (outcome === 0) {
+    instantiateManager()
+    domUpdates.sendToManagerDash(todaysDate) 
+  } else if (outcome === `Username or Password was entered incorrectly`) {
+    domUpdates.displayLoginError(outcome)
+  }
+}
 
+//under construction
+const findAvailRooms = () => {
+  const roomType = document.querySelector('.room-dropdown').value
+  const selectedDate = document.querySelector('.calendar').value
+  domUpdates.findAvailRooms(roomType, selectedDate)
+}
+
+const instantiateGuest = (username) => {
+  const regex = /customer([\d]+)/
+  const match = regex.exec(username)
+  if (match) {
+    guest = new Guest(match[1], hotel.allUsers.users, hotel.allRooms.rooms, hotel.allBookings.bookings)
+    domUpdates.currentUser = guest
+  }
+}
+
+const instantiateManager = () => {
+  manager = new Manager(hotel.allUsers, hotel.allRooms, hotel.allBookings)
+  domUpdates.currentUser = manager
+}
+
+//////////////EVENT LISTENERS///////////////////
 window.addEventListener('load', fetchAllData)
 window.addEventListener('click', clickhandler)
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
- 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import User from './User';
-import domUpdates from './domUpdates'
-// console.log('This is the JavaScript entry file - your code begins here.');

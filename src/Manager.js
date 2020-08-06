@@ -1,42 +1,46 @@
-import User from '../src/User';
+import Hotel from '../src/Hotel';
 
-class Manager extends User {
+class Manager extends Hotel {
   constructor(guestsData, roomData, bookingsData) {
     super(guestsData, roomData, bookingsData)
   }
 
-  calculateRevenue(date) {
-    let todaysBookings = this.allBookings.filter(booking => booking.date === date)
-    return todaysBookings.reduce((todaysRevenue, todaysBooking) => {
-      this.allRooms.forEach(room => {
+  calcRevenue(date) {
+    let todaysBookings = this.allBookings.bookings.filter(booking => booking.date === date)
+    const revenueMade = todaysBookings.reduce((todaysRevenue, todaysBooking) => {
+      this.allRooms.rooms.forEach(room => {
         if (room.number === todaysBooking.roomNumber) {
           todaysRevenue += room.costPerNight
         }
       })
       return todaysRevenue
     }, 0)
+    return `$${revenueMade.toFixed(2)}`
   }
 
   searchUserHistory(searchInput) {
-    const suspectedUser = this.allUsers.find(user => user.name.includes(searchInput))
+    const suspectedUser = this.allUsers.users.find(user => user.name.includes(searchInput))
     if (suspectedUser) {
-      return this.allBookings.filter(booking => suspectedUser.id === booking.userID)
+      return this.allBookings.bookings.filter(booking => suspectedUser.id === booking.userID)
     } else {
       return 'Please try a different name'
     }
   }
 
   findTotalOpenRooms(date) {
-    const bookedToday = this.allBookings.filter(booking => booking.date === date) 
-    return this.allRooms.length - bookedToday.length
+    const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date) 
+    return this.allRooms.rooms.length - bookedToday.length
   }
 
   calcPercentageOccupied(date) {
-    const bookedToday = this.allBookings.filter(booking => booking.date === date)
-    return ((bookedToday.length / this.allRooms.length).toFixed(4)) * 100
+    const bookedToday = this.allBookings.bookings.filter(booking => booking.date === date)
+    const estimatedResult = (bookedToday.length / this.allRooms.rooms.length).toFixed(2) * 100
+    if (bookedToday.length === 0) {
+      return `0%`
+    } else if (estimatedResult >= 100) {
+      return 'You have overbooked!'
+    }
   }
-
-
 }
 
 export default Manager

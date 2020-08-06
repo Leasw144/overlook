@@ -1,73 +1,84 @@
 import { expect } from 'chai';
 import Manager from '../src/Manager'
 
-describe('Manager', function () {
- let bookings, allRooms, allUsers, manager, user;
+describe.only('Manager', function () {
+ let bookings, allRooms, allUsers, manager, allData;
   beforeEach(() => {
-    allUsers = [
-      {
-        "id": 1,
-        "name": "Leata Rich"
-      },
-      {
-        "id": 2,
-        "name": "Othello Brello"
-      },
-      {
-        "id": 3,
-        "name": "Elma Hernandez"
-      }
-    ]
-    allRooms = [
-      {
-        "number": 1,
-        "roomType": "residential suite",
-        "bidet": true,
-        "bedSize": "queen",
-        "numBeds": 1,
-        "costPerNight": 358.4
-      },
-      {
-        "number": 2,
-        "roomType": "suite",
-        "bidet": false,
-        "bedSize": "full",
-        "numBeds": 2,
-        "costPerNight": 477.38
-      },
-      {
-        "number": 8,
-        "roomType": "single room",
-        "bidet": false,
-        "bedSize": "king",
-        "numBeds": 1,
-        "costPerNight": 491.14
-      }
-    ]
-    bookings = [
-      {
-        "id": "5fwrgu4i7k55hl6sz",
-        "userID": 1,
-        "date": "2020/04/22",
-        "roomNumber": 1,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t5",
-        "userID": 8,
-        "date": "2020/01/24",
-        "roomNumber": 24,
-        "roomServiceCharges": []
-      },
-      {
-        "id": "5fwrgu4i7k55hl6t6",
-        "userID": 2,
-        "date": "2020/04/22",
-        "roomNumber": 8,
-        "roomServiceCharges": []
-      }
-    ]
-    manager = new Manager(allUsers, allRooms, bookings)
+    allUsers = {
+
+      users: [
+        {
+          "id": 1,
+          "name": "Leata Rich"
+        },
+        {
+          "id": 2,
+          "name": "Othello Brello"
+        },
+        {
+          "id": 3,
+          "name": "Elma Hernandez"
+        }
+      ]
+    }  
+    allRooms = {
+ 
+      rooms: [
+        {
+          "number": 1,
+          "roomType": "residential suite",
+          "bidet": true,
+          "bedSize": "queen",
+          "numBeds": 1,
+          "costPerNight": 358.4
+        },
+        {
+          "number": 2,
+          "roomType": "suite",
+          "bidet": false,
+          "bedSize": "full",
+          "numBeds": 2,
+          "costPerNight": 477.38
+        },
+        {
+          "number": 8,
+          "roomType": "single room",
+          "bidet": false,
+          "bedSize": "king",
+          "numBeds": 1,
+          "costPerNight": 491.14
+        }
+      ]
+    }
+    bookings = {
+
+      bookings: [
+        {
+          "id": "5fwrgu4i7k55hl6sz",
+          "userID": 1,
+          "date": "2020/04/22",
+          "roomNumber": 1,
+          "roomServiceCharges": []
+        },
+        {
+          "id": "5fwrgu4i7k55hl6t5",
+          "userID": 8,
+          "date": "2020/01/24",
+          "roomNumber": 24,
+          "roomServiceCharges": []
+        },
+        {
+          "id": "5fwrgu4i7k55hl6t6",
+          "userID": 2,
+          "date": "2020/04/22",
+          "roomNumber": 8,
+          "roomServiceCharges": []
+        }
+      ]
+    }
+  
+    allData = [allUsers, allRooms, bookings]
+    manager = new Manager(allData[0], allData[1], allData[2])
 
   })
   it('should be a function', function () {
@@ -79,11 +90,11 @@ describe('Manager', function () {
   })
 
   it('should have a way to calculate the days total revenue', function() {
-    expect(manager.calculateRevenue("2020/04/22")).to.equal(849.54)
+    expect(manager.calcRevenue("2020/04/22")).to.equal(849.54)
   })
 
-  it('if a day is called with no reservations return a message', function() {
-    expect(manager.calculateRevenue('2020/04/21')).to.equal(0)
+  it('if a day is called with no reservations return 0', function() {
+    expect(manager.calcRevenue('2020/04/21')).to.equal(0)
   })
 
   it('can search a users name and return their booking history', function() {
@@ -109,11 +120,15 @@ describe('Manager', function () {
   })
 
   it('should be able to give a percentage of rooms occupied on a given day', () => {
-    expect(manager.calcPercentageOccupied("2020/01/24")).to.equal(33.33)
+    expect(manager.calcPercentageOccupied("2020/01/24")).to.equal(33)
   })
 
   it('should be able to give a percentage of rooms occupied on a given day', () => {
-    expect(manager.calcPercentageOccupied("2020/04/22")).to.equal(66.67)
+    expect(manager.calcPercentageOccupied("2020/04/22")).to.equal(67)
+  })
+
+  it('should return 0 if no rooms have been booked for the day', () => {
+    expect(manager.calcPercentageOccupied("2024/04/22")).to.equal(0)
   })
 
 

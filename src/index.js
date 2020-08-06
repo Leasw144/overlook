@@ -62,7 +62,6 @@ const clickhandler = () => {
     determineDash(loginOutcome, userAttempt)
   } else if (event.target.closest('.availability-request-btn')) {
     findAvailRooms()
-    // domUpdates.displayAvailRooms(todaysDate)
   }
 }
 
